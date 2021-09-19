@@ -3,8 +3,8 @@
   <div>
     <h1>Test app</h1>
     <div class="display">
-      <input type="text" v-model.number="op1" />
-      <input type="text" v-model.number="op2" />
+      <input type="text" v-model.number="op1" placeholder="0" />
+      <input type="text" v-model.number="op2" placeholder="0" />
     </div>
     <h3>Result = {{ result }}</h3>
     <div class="keyboard">
@@ -38,7 +38,6 @@
               id="opid1"
               checked
               v-model="selected"
-              @change="onChange()"
             />
             <label for="opid1">op1</label>
             <input
@@ -47,7 +46,6 @@
               name="operands"
               id="opid2"
               v-model="selected"
-              @change="onChange()"
             />
             <label for="opid2">op2</label>
           </div>
@@ -68,8 +66,8 @@ export default {
   name: "Calc",
   data() {
     return {
-      op1: 0,
-      op2: 0,
+      op1: "",
+      op2: "",
       result: 0,
       keyboard: false,
       error: false,
@@ -118,11 +116,11 @@ export default {
     },
     divide() {
       if (this.op2 !== 0) {
-        this.result = this.op1 / this.op2;
+        this.result = parseFloat(this.op1 / this.op2).toFixed(2);
       } else {
         this.error = true;
       }
-      return parseInt(this.result);
+      return this.result;
     },
     pow() {
       return (this.result = Math.pow(this.op1, this.op2));
@@ -140,16 +138,16 @@ export default {
     },
     postValue(value) {
       if (this.selected === "op1") {
-        this.op1 = value;
+        this.op1 += value;
       } else {
-        this.op2 = value;
+        this.op2 += value;
       }
     },
     deleteValue() {
       if (this.selected === "op1") {
-        this.op1 = "";
+        this.op1 = this.op1.toString().slice(0, -1);
       } else {
-        this.op2 = "";
+        this.op2 = this.op2.toString().slice(0, -1);
       }
     },
   },
