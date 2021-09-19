@@ -66,8 +66,8 @@ export default {
   name: "Calc",
   data() {
     return {
-      op1: "",
-      op2: "",
+      op1: 0,
+      op2: 0,
       result: 0,
       keyboard: false,
       error: false,
@@ -81,6 +81,7 @@ export default {
   methods: {
     calculateHandler(operation) {
       this.error = false;
+
       switch (operation) {
         case "plus":
           this.plus();
@@ -115,7 +116,7 @@ export default {
       return (this.result = this.op1 * this.op2);
     },
     divide() {
-      if (this.op2 !== 0) {
+      if (this.op2 !== 0 && this.op2 != "") {
         this.result = parseFloat(this.op1 / this.op2).toFixed(2);
       } else {
         this.error = true;
@@ -126,12 +127,12 @@ export default {
       return (this.result = Math.pow(this.op1, this.op2));
     },
     ceil() {
-      if (this.op2 !== 0) {
-        this.result = this.op1 / this.op2;
+      if (this.op2 !== 0 && this.op2 != "") {
+        this.result = (this.op1 - (this.op1 % this.op2)) / this.op2;
       } else {
         this.error = true;
       }
-      return Math.ceil(this.result);
+      return this.result;
     },
     onChange() {
       console.log(this.selected);
@@ -155,6 +156,9 @@ export default {
 </script>
 
 <style scoped>
+button {
+  margin: 10px 0px 10px 0px;
+}
 .error {
   color: blueviolet;
 }
