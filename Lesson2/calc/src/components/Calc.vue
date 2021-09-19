@@ -29,7 +29,7 @@
           >
             {{ keyItem }}
           </button>
-          <button>C</button>
+          <button @click="deleteValue()">C</button>
           <div>
             <input
               type="radio"
@@ -143,6 +143,13 @@ export default {
         this.op1 = value;
       } else {
         this.op2 = value;
+      }
+    },
+    deleteValue() {
+      if (this.selected === "op1") {
+        this.op1 = "";
+      } else {
+        this.op2 = "";
       }
     },
   },
