@@ -23,7 +23,7 @@
         <br />
         <div v-if="keyboard">
           <button
-            @click="op1 = keyItem"
+            @click="postValue(keyItem)"
             v-for="keyItem in keyItems"
             :key="keyItem"
           >
@@ -136,8 +136,14 @@ export default {
       return Math.ceil(this.result);
     },
     onChange() {
-      //var data = event.target.value;
       console.log(this.selected);
+    },
+    postValue(value) {
+      if (this.selected === "op1") {
+        this.op1 = value;
+      } else {
+        this.op2 = value;
+      }
     },
   },
 };
