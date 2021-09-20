@@ -72,7 +72,7 @@ export default {
       keyboard: false,
       error: false,
       selected: "op1",
-      msg: "error: please provide not zero number",
+      msg: "error: please provide number",
       operations: ["plus", "minus", "multiply", "divide", "pow", "ceil"],
       keyItems: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
       logs: {},
@@ -81,26 +81,29 @@ export default {
   methods: {
     calculateHandler(operation) {
       this.error = false;
-
-      switch (operation) {
-        case "plus":
-          this.plus();
-          break;
-        case "minus":
-          this.minus();
-          break;
-        case "multiply":
-          this.multiply();
-          break;
-        case "divide":
-          this.divide();
-          break;
-        case "pow":
-          this.pow();
-          break;
-        case "ceil":
-          this.ceil();
-          break;
+      if (!isNaN(this.op1) && !isNaN(this.op2)) {
+        switch (operation) {
+          case "plus":
+            this.plus();
+            break;
+          case "minus":
+            this.minus();
+            break;
+          case "multiply":
+            this.multiply();
+            break;
+          case "divide":
+            this.divide();
+            break;
+          case "pow":
+            this.pow();
+            break;
+          case "ceil":
+            this.ceil();
+            break;
+        }
+      } else {
+        this.error = true;
       }
       const key = Date.now();
       const value = `${this.op1}${operation}${this.op2}=${this.result}`;
