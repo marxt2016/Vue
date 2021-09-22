@@ -1,0 +1,10 @@
+.table {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    max-width: 480px;
+    padding: 10px;
+    border-bottom: 1px solid #9c9da3;
+}
+.header {
+    font-weight: 600;
+}
