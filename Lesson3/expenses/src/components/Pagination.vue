@@ -4,12 +4,10 @@
       <li class="pag-items">
         <a href="#">&lt;</a>
       </li>
-      <li class="pag-items">
-        <a href="#">1</a>
+      <li class="pag-items" v-for="page in pages" :key="page.name">
+        <a href="#" @click="onClickPage(page.name)">{{ page.name }}</a>
       </li>
-      <li class="pag-items">
-        <a href="#">2</a>
-      </li>
+
       <li class="pag-items">
         <a href="#">&gt;</a>
       </li>
@@ -21,7 +19,61 @@
 export default {
   name: "Pagination",
   components: {},
-  props: {},
+  props: {
+    totalPages: {
+      type: Number,
+      default: 3,
+    },
+    perPage: {
+      type: Number,
+      default: 3,
+    },
+    currentPage: {
+      type: Number,
+      default: 1,
+    },
+    maxVisibleButtons: {
+      type: Number,
+      default: 3,
+    },
+  },
+  methods: {
+    onClickPage(page) {
+      this.$emit("pagechanged", page);
+    },
+  },
+  computed: {
+    startPage() {
+      // When on the first page
+      if (this.currentPage === 1) {
+        return 1;
+      }
+
+      // When on the last page
+      if (this.currentPage === this.totalPages) {
+        return this.totalPages - this.maxVisibleButtons;
+      }
+
+      // When inbetween
+      return this.currentPage - 1;
+    },
+    pages() {
+      const range = [];
+
+      for (
+        let i = this.startPage;
+        i <=
+        Math.min(this.startPage + this.maxVisibleButtons - 1, this.totalPages);
+        i++
+      ) {
+        range.push({
+          name: i,
+        });
+      }
+
+      return range;
+    },
+  },
 };
 </script>
 

@@ -1,3 +1,12 @@
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: left;
+    color: #2c3e50;
+    margin: 0 auto;
+    max-width: 500px;
+}
 .table {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 1fr;
@@ -45,13 +54,10 @@ a:hover {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
+    width: 30%;
     border-radius: 5px;
 }
-.close {
-    top: 10px;
-    right: 10px;
-}
+
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.8s;
@@ -60,4 +66,45 @@ a:hover {
 .fade-leave-to
 /* .fade-leave-active in <2.1.8 */ {
     opacity: 0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px #cccdd2;
+}
+
+.btn {
+    background-color: linear-gradient(#f7f8fa, #e7e9ec);
+    border-color: #adb1b8 #a2a6ac #8d9096;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, 0.6) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    height: 29px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 11px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 10px 0 0;
+}
+
+button:hover {
+    background-color: #d1d2d4;
+    border-color: #a2a6ac;
+    box-sizing: border-box;
 }
