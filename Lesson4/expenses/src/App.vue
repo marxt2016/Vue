@@ -8,11 +8,7 @@
       <button class="btn" @click="showModal = true">Add expenses</button>
       <PaymentsDisplay ref="PaymentsDisplay" :perPage="3" />
       <transition name="fade" mode="out-in">
-        <NewExpenseItem
-          v-if="showModal"
-          @hide="showModal = false"
-          @save="addNew"
-        />
+        <NewExpenseItem v-if="showModal" @hide="showModal = false" />
       </transition>
       <Pagination
         v-if="0"

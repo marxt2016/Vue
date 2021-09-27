@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       itemsList: [],
+      page: 2,
     };
   },
   methods: {
@@ -36,7 +37,7 @@ export default {
   },
 
   created() {
-    this.fetchData();
+    this.fetchData(this.page);
   },
 };
 </script>
