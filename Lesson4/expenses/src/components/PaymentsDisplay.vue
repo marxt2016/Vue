@@ -6,12 +6,14 @@
       <div>Category</div>
       <div>Value</div>
     </div>
-    <ExpenseItem
-      class="table"
-      v-for="item in allData"
-      :key="item.id"
-      v-bind:itemsData="item"
-    />
+    <div v-for="item in itemsList" :key="item.id">
+      <ExpenseItem
+        class="table"
+        v-for="items in item"
+        :key="items.id"
+        v-bind:itemsData="items"
+      />
+    </div>
   </div>
 </template>
 
@@ -22,22 +24,34 @@ import { mapGetters, mapMutations, mapActions } from "vuex";
 export default {
   name: "PaymentsDisplay",
   components: { ExpenseItem },
-  computed: mapGetters(["allData"]),
-  props: {},
+  computed: mapGetters(["allData", "perpage"]),
+  props: {
+    perPage: {
+      type: Number,
+      default: 3,
+    },
+  },
 
   data() {
     return {
       itemsList: [],
-      page: 2,
+      defaultpage: 1,
     };
   },
   methods: {
     ...mapMutations(["setExpenses"]),
-    ...mapActions(["fetchData"]),
+    ...mapActions(["fetchData", "fetchDataPerPage"]),
+    async displayOnPage(page) {
+      await this.fetchDataPerPage(page);
+      this.itemsList = [];
+      this.itemsList.push(this.perpage[page - 1]);
+      return this.itemsList;
+    },
   },
 
   created() {
-    this.fetchData(this.page);
+    this.fetchDataPerPage(this.defaultpage);
+    this.itemsList = this.perpage;
   },
 };
 </script>

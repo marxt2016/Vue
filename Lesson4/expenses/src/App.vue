@@ -11,7 +11,6 @@
         <NewExpenseItem v-if="showModal" @hide="showModal = false" />
       </transition>
       <Pagination
-        v-if="0"
         :totalPages="totalpages"
         :perPage="3"
         :currentPage="currentPage"
@@ -37,18 +36,16 @@ export default {
     return {
       showModal: false,
       currentPage: 1,
-      totalpages: 5,
+      totalpages: 3,
     };
   },
   methods: {
-    addNew(item) {
-      this.$refs.PaymentsDisplay.itemsList.push(item);
-    },
     onPageChange(page) {
       this.$refs.PaymentsDisplay.displayOnPage(page);
       this.currentPage = page;
     },
   },
+  created() {},
 };
 </script>
 

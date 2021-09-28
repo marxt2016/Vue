@@ -2,14 +2,14 @@
   <div>
     <ul class="pag-container">
       <li class="pag-items">
-        <a href="#">&lt;</a>
+        <a href="#" @click="onClickPage(1)">&lt;</a>
       </li>
       <li class="pag-items" v-for="page in pages" :key="page.name">
         <a href="#" @click="onClickPage(page.name)">{{ page.name }}</a>
       </li>
 
       <li class="pag-items">
-        <a href="#">&gt;</a>
+        <a href="#" @click="onClickPage(pages.length)">&gt;</a>
       </li>
     </ul>
   </div>
@@ -22,7 +22,7 @@ export default {
   props: {
     totalPages: {
       type: Number,
-      default: 3,
+      default: 5,
     },
     perPage: {
       type: Number,
@@ -34,7 +34,7 @@ export default {
     },
     maxVisibleButtons: {
       type: Number,
-      default: 3,
+      default: 2,
     },
   },
   methods: {
