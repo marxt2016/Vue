@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form :autosave="saveData()">
     <div class="container">
       <input type="date" name="date" v-model="newExpense.date" />
       <select v-model="newExpense.category">
@@ -37,19 +37,31 @@ export default {
         category: this.$route.query.cat,
         value: this.$route.query.n,
       },
-      errors: false,
+      errors: true,
+      autosave: false,
     };
   },
   methods: {
     ...mapActions(["loadCategories"]),
     ...mapMutations(["addNew"]),
     saveData() {
-      this.addNew(this.newExpense);
       this.errors = false;
-      this.$router.push({ name: "home" });
+      this.truefill();
+      if (this.autosave == true) {
+        this.addNew(this.newExpense);
+        this.returnHome();
+      } else {
+        this.errors = true;
+      }
     },
     returnHome() {
       this.$router.push({ name: "home" });
+    },
+    truefill() {
+      if (this.newExpense.category && this.newExpense.value) {
+        console.log("form is filled");
+        return (this.autosave = true);
+      }
     },
   },
 };
