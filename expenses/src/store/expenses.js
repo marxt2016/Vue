@@ -7,6 +7,9 @@ const state = {
 const getters = {
     perpage(state) {
         return state.expenses
+    },
+    alldata(state) {
+        return state.expenses
     }
 
 }
@@ -14,7 +17,7 @@ const mutations = {
     setExpenses(state, val) {
         let res = false;
         for (let i = 0; i < state.expenses.length; i++) {
-            if (isSubset(state.expenses[i], val)) {
+            if (isSubset(state.expenses[i], val) || state.expenses[i].length > val.length) {
                 return res = true
             }
         }
@@ -23,7 +26,7 @@ const mutations = {
         }
     },
     addNew(state, newItem) {
-        state.expenses[0].unshift(newItem)
+        state.expenses[0].unshift(newItem);
     },
 }
 const actions = {

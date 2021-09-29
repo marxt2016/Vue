@@ -44,6 +44,13 @@ ul {
 
 .pag-container .pag-items {
   padding: 5px;
+  cursor: pointer;
+}
+
+.pag-container .pag-items:hover {
+  background-color: #fefefe;
+  cursor: pointer;
+  color: blue;
 }
 
 a {

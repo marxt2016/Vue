@@ -31,8 +31,15 @@ ul {
     border-radius: 2px;
     .pag-items {
         padding: 5px;
+        cursor: pointer;
+    }
+    .pag-items:hover {
+        background-color: #fefefe;
+        cursor: pointer;
+        color: blue;
     }
 }
+
 a {
     text-decoration: none;
     color: #8d9096;

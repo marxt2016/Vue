@@ -19,7 +19,7 @@ export default {
   },
   created() {
     this.fetchDataPerPage(1);
-    console.log("created");
+    this.fetchDataPerPage(2);
   },
 };
 </script>
