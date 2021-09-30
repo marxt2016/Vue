@@ -32,10 +32,10 @@ export default {
   data() {
     return {
       newExpense: {
-        id: Math.floor(Math.random() * 1000),
-        date: new Date().toISOString().split("T")[0],
-        category: this.$route.query.cat,
-        value: this.$route.query.n,
+        id: "",
+        date: "",
+        category: "",
+        value: "",
       },
       errors: true,
       autosave: false,
@@ -63,6 +63,14 @@ export default {
         return (this.autosave = true);
       }
     },
+  },
+  created() {
+    this.newExpense = {
+      id: Math.floor(Math.random() * 1000),
+      date: new Date().toISOString().split("T")[0],
+      category: this.$route.query.cat,
+      value: this.$route.query.n,
+    };
   },
 };
 </script>
