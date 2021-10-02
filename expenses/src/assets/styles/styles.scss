@@ -1,3 +1,4 @@
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -9,7 +10,7 @@
 }
 .table {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr 0.5fr 0.5fr;
     padding: 10px;
     border-bottom: 1px solid #cccdd2;
     font-size: 14px;
@@ -115,4 +116,33 @@ button:hover {
     background-color: #d1d2d4;
     border-color: #a2a6ac;
     box-sizing: border-box;
+}
+.actions {
+    text-align: center;
+}
+.wrapper {
+    position: relative;
+    background-color: rgba(21, 50, 143, 0.274);
+    width: 100%;
+    height: 100%;
+}
+.modal-content-actions {
+    position: absolute;
+    box-shadow: 2px 1px 22px 12px rgba(48, 50, 52, 0.2);
+    left: 360px;
+    top: -20px;
+    background-color: #fefefe;
+    padding: 5px 10px;
+    width: 80px;
+    border-radius: 5px;
+}
+
+.modal-content-actions > div:hover {
+    background-color: #e4e7eb;
+    cursor: pointer;
+    color: rgb(47, 12, 128);
+}
+.icon {
+    padding-right: 5px;
+    cursor: pointer;
 }
