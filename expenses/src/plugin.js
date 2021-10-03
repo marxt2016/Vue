@@ -8,14 +8,21 @@ export default {
         this.installed = true
         Vue.prototype.$myplugin = {
             EventBus: new Vue(),
-            edit(id) {
-                this.EventBus.$emit('edit', { id })
-                console.log('Edit plugin method   id = ' + id)
+            edit(data) {
+                this.EventBus.$emit('edit', { ...data })
             },
-            delete(id, settings) {
+            del(data) {
                 console.log('Delete plugin method')
-                this.EventBus.$emit('delete', { id, ...settings })
+                this.EventBus.$emit('delete', { ...data })
+            },
+            show(name) {
+                this.EventBus.$emit('shown', { name })
+            },
+
+            hide(name) {
+                this.EventBus.$emit('hide', { name })
             }
+
         }
     }
 }

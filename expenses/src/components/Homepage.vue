@@ -2,7 +2,7 @@
   <div>
     <button class="btn" @click="showModal = true">Add expenses</button>
 
-    <PaymentsDisplay ref="PaymentsDisplay" :filtered="filtered" />
+    <PaymentsDisplay :filtered="filtered" />
     <transition name="fade" mode="out-in">
       <NewExpenseItem v-if="showModal" @hide="showModal = false" />
     </transition>
@@ -65,11 +65,6 @@ export default {
   },
   methods: {
     ...mapActions(["loadCategories", "fetchDataPerPage"]),
-    onPageChange(page) {
-      this.$refs.PaymentsDisplay.displayOnPage(page);
-
-      this.currentPage = page;
-    },
     clickHandler(num, cat) {
       this.$router.push({ name: "quick1", query: { n: num, cat: cat } });
     },

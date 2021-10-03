@@ -37,14 +37,7 @@ export default {
   name: "NewExpenseItem",
   components: {},
   computed: mapGetters(["getCategoryList"]),
-  props: {
-    show: {
-      type: Boolean,
-      default() {
-        return false;
-      },
-    },
-  },
+  props: {},
   data() {
     return {
       newExpense: {
@@ -56,6 +49,7 @@ export default {
       errors: false,
     };
   },
+
   methods: {
     ...mapActions(["loadCategories"]),
     ...mapMutations(["addNew"]),

@@ -130,11 +130,18 @@ button:hover {
     position: absolute;
     box-shadow: 2px 1px 22px 12px rgba(48, 50, 52, 0.2);
     left: 360px;
-    top: -20px;
     background-color: #fefefe;
     padding: 5px 10px;
-    width: 80px;
+    min-width: 80px;
     border-radius: 5px;
+}
+.close {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    top: 0;
+    left: 450px;
+    cursor: pointer;
 }
 
 .modal-content-actions > div:hover {

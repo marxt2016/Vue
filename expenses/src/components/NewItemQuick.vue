@@ -59,7 +59,6 @@ export default {
     },
     truefill() {
       if (this.newExpense.category && this.newExpense.value) {
-        console.log("form is filled");
         return (this.autosave = true);
       }
     },

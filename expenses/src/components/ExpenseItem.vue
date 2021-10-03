@@ -4,13 +4,9 @@
     <div>{{ itemsData.date }}</div>
     <div>{{ itemsData.category }}</div>
     <div>{{ itemsData.value }}</div>
-    <div @click="showAction = true"><i class="fa fa-ellipsis-v icon"></i></div>
+    <div @click="onShow"><i class="fa fa-ellipsis-v icon"></i></div>
     <transition name="fade" mode="out-in">
-      <Plugin
-        v-if="showAction"
-        @hideAction="showAction = false"
-        :itemsData="itemsData"
-      />
+      <Plugin v-if="showWindow === 'plugin'" :itemsData="itemsData" />
     </transition>
   </div>
 </template>
@@ -23,7 +19,17 @@ export default {
   components: {
     Plugin,
   },
-
+  methods: {
+    onShow() {
+      this.showWindow = "plugin";
+    },
+    onHide() {
+      this.showWindow = "";
+    },
+    onEdit(data) {
+      console.log(data.id);
+    },
+  },
   props: {
     itemsData: {
       type: Object,
@@ -34,8 +40,12 @@ export default {
   },
   data() {
     return {
-      showAction: false,
+      showWindow: "",
     };
+  },
+  mounted() {
+    this.$myplugin.EventBus.$on("show", this.onShow);
+    this.$myplugin.EventBus.$on("hide", this.onHide);
   },
 };
 </script>
