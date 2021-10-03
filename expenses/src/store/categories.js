@@ -19,7 +19,7 @@ const actions = {
     loadCategories({ commit }) {
         return new Promise((resolve) => {
             setTimeout(() => {
-                resolve(['Food', 'Transport', 'Education', 'Entertainment'])
+                resolve(['Food', 'Transport', 'Education', 'Entertainment', 'Navigation', 'Sport'])
             }, 1000)
         })
             .then(res => {

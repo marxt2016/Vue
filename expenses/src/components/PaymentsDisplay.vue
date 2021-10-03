@@ -36,18 +36,17 @@ export default {
 
   data() {
     return {
-      itemsList: [this.displayOnPage(1)],
+      itemsList: [this.displayOnPage()],
       defaultpage: 1,
     };
   },
   methods: {
     ...mapMutations(["setExpenses"]),
     ...mapActions(["loadCategories", "fetchDataPerPage"]),
-    async displayOnPage(page) {
-      await this.fetchDataPerPage(page);
-
+    async displayOnPage() {
+      await this.fetchDataPerPage();
       this.itemsList = [];
-      this.itemsList.push(this.perpage[page - 1]);
+      this.itemsList.push(this.perpage);
       return this.itemsList;
     },
   },
