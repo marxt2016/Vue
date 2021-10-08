@@ -3,8 +3,8 @@
   <div>
     <h1>Test app</h1>
     <div class="display">
-      <input type="text" v-model.number="op1" placeholder="0" />
-      <input type="text" v-model.number="op2" placeholder="0" />
+      <input type="text" v-model.number="op1" name="op1" placeholder="0" />
+      <input type="text" v-model.number="op2" name="op2" placeholder="0" />
     </div>
     <h3>Result = {{ result }}</h3>
     <div class="keyboard">
