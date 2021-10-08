@@ -11,6 +11,7 @@
       <button
         v-for="item in operations"
         :key="item"
+        :name="item"
         @click="calculateHandler(item)"
       >
         {{ item }}
