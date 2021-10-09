@@ -7,11 +7,11 @@
       <input type="text" v-model.number="op2" name="op2" placeholder="0" />
     </div>
     <h3>Result = {{ result }}</h3>
-    <div class="keyboard">
+    <div>
       <button
         v-for="item in operations"
         :key="item"
-        :name="item"
+        :id="item"
         @click="calculateHandler(item)"
       >
         {{ item }}
@@ -22,11 +22,12 @@
         <input type="checkbox" id="keyboard" v-model="keyboard" />
         <label for="keyboard">Show keyboard</label>
         <br />
-        <div v-if="keyboard">
+        <div class="keyboard" v-if="keyboard">
           <button
             @click="postValue(keyItem)"
             v-for="keyItem in keyItems"
             :key="keyItem"
+            :id="keyItem"
           >
             {{ keyItem }}
           </button>
@@ -36,6 +37,7 @@
               type="radio"
               value="op1"
               name="operands"
+              class="opid1"
               id="opid1"
               checked
               v-model="selected"
@@ -121,7 +123,7 @@ export default {
     },
     divide() {
       if (this.op2 !== 0 && this.op2 != "") {
-        this.result = parseFloat(this.op1 / this.op2).toFixed(2);
+        this.result = Number(parseFloat(this.op1 / this.op2).toFixed(2));
       } else {
         this.error = true;
       }
