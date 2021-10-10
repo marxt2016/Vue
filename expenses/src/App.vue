@@ -1,15 +1,14 @@
 <template>
-  <div id="app">
-    <header>
-      <h1>My personal costs</h1>
-      <hr />
-    </header>
-    <main>
+  <v-app>
+    <v-app-bar app color="primary" dark>
+      <h1 class="display-1">My personal costs</h1>
+      <v-spacer></v-spacer>
+    </v-app-bar>
+    <v-main>
       <router-view />
-    </main>
-  </div>
+    </v-main>
+  </v-app>
 </template>
-
 <script>
 import { mapActions } from "vuex";
 export default {
@@ -18,8 +17,7 @@ export default {
     ...mapActions(["fetchDataPerPage"]),
   },
   created() {
-    this.fetchDataPerPage(1);
-    this.fetchDataPerPage(2);
+    this.fetchDataPerPage();
   },
 };
 </script>
