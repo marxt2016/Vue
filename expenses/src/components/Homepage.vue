@@ -1,33 +1,38 @@
 <template>
-  <div>
-    <button class="btn" @click="showModal = true">Add expenses</button>
+  <v-container class="mb-4">
+    <v-row class="flex-column align-between ma-0">
+      <v-col>
+        <v-btn class="btn" @click="showModal = true">Add expenses</v-btn>
+        <v-btn class="btn" @click="clickHandler(200, 'Food')">
+          Quick Add Food
+        </v-btn>
+        <v-btn class="btn" @click="clickHandler(50, '')">
+          Quick Add Transport
+        </v-btn>
+        <v-btn class="btn" @click="clickHandler(2000, 'Entertainment')">
+          Quick Add Fun
+        </v-btn>
+      </v-col>
+      <v-col>
+        <PaymentsDisplay :vfiltered="vfiltered" />
+        <transition name="fade" mode="out-in">
+          <NewExpenseItem v-if="showModal" @hide="showModal = false" />
+        </transition>
+        <div class="pag-container" v-if="0">
+          <div
+            class="pag-items"
+            v-for="page in pages"
+            :key="page.id"
+            @click="pageClick(page)"
+          >
+            {{ page }}
+          </div>
+        </div>
+      </v-col>
+    </v-row>
 
-    <PaymentsDisplay :filtered="filtered" />
-    <transition name="fade" mode="out-in">
-      <NewExpenseItem v-if="showModal" @hide="showModal = false" />
-    </transition>
-    <div class="pag-container">
-      <div
-        class="pag-items"
-        v-for="page in pages"
-        :key="page.id"
-        @click="pageClick(page)"
-      >
-        {{ page }}
-      </div>
-    </div>
-    <hr />
-    <button class="btn" @click="clickHandler(200, 'Food')">
-      Quick Add Food
-    </button>
-    <button class="btn" @click="clickHandler(50, '')">
-      Quick Add Transport
-    </button>
-    <button class="btn" @click="clickHandler(2000, 'Entertainment')">
-      Quick Add Entertainment
-    </button>
     <!-- <router-link to="/quickAdd">Quick Add</router-link> -->
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -53,6 +58,9 @@ export default {
 
       let res = this.makeArr();
       return res.slice(start, end);
+    },
+    vfiltered: function () {
+      return this.makeArr();
     },
   },
   data() {

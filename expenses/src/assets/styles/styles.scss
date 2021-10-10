@@ -6,7 +6,7 @@
     text-align: left;
     color: #2c3e50;
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 1000px;
 }
 .table {
     display: grid;
@@ -152,4 +152,7 @@ button:hover {
 .icon {
     padding-right: 5px;
     cursor: pointer;
+}
+.rows {
+    margin: 0;
 }

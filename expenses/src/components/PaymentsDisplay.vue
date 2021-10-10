@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="table header">
+    <div class="table header" v-if="0">
       <div>#</div>
       <div>Date</div>
       <div>Category</div>
@@ -12,6 +12,13 @@
       :key="items.id"
       v-bind:itemsData="items"
     />
+    <v-data-table
+      :headers="headers"
+      :items="this.vfiltered"
+      :items-per-page="5"
+      class="elevation-1"
+    >
+    </v-data-table>
   </div>
 </template>
 
@@ -32,12 +39,28 @@ export default {
         return [];
       },
     },
+    vfiltered: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
   },
 
   data() {
     return {
       itemsList: [this.displayOnPage()],
-      defaultpage: 1,
+      headers: [
+        {
+          text: "#",
+          value: "id",
+          align: "start",
+          sortable: false,
+        },
+        { text: "Date", value: "date" },
+        { text: "Cagegory", value: "category" },
+        { text: "Value", value: "value" },
+      ],
     };
   },
   methods: {
@@ -60,5 +83,9 @@ export default {
 };
 </script>
 
-<style lang="scss" src="../assets/styles/styles.scss">
+<style>
+.v-data-table-header th {
+  font-weight: 600 !important;
+  font-size: 16px !important;
+}
 </style>
