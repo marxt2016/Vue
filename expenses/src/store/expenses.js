@@ -48,7 +48,7 @@ const mutations = {
 }
 const actions = {
     async fetchDataPerPage({ commit }) {
-        const result = await fetch('https://marxt2016.github.io/db.json');
+        const result = await fetch('https://marxt2016.github.io/db1.json');
         const expenses = await result.json();
         const keys = Object.keys(expenses);
         commit('setExpenses', expenses[keys])

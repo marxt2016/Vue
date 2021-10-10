@@ -18,8 +18,7 @@ export default {
     ...mapActions(["fetchDataPerPage"]),
   },
   created() {
-    this.fetchDataPerPage(1);
-    this.fetchDataPerPage(2);
+    this.fetchDataPerPage();
   },
 };
 </script>
