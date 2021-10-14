@@ -1,0 +1,28 @@
+{
+  "expenseItems": [
+    {
+      "id": 1,
+      "date": "11.11.1998",
+      "category": "Transport",
+      "value": 100
+    },
+    {
+      "id": 2,
+      "date": "11.12.1998",
+      "category": "Food",
+      "value": 200
+    },
+    {
+      "id": 3,
+      "date": "13.12.1998",
+      "category": "Clothes",
+      "value": 500
+    },
+    {
+      "id": 4,
+      "date": "17.12.1998",
+      "category": "Entertainment",
+      "value": 550
+    }
+  ]
+}
