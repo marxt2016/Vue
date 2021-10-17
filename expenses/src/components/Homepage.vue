@@ -20,7 +20,7 @@
     <button class="btn" @click="clickHandler(200, 'Food')">
       Quick Add Food
     </button>
-    <button class="btn" @click="clickHandler(50, '')">
+    <button class="btn" @click="clickHandler(50, 'Transport')">
       Quick Add Transport
     </button>
     <button class="btn" @click="clickHandler(2000, 'Entertainment')">

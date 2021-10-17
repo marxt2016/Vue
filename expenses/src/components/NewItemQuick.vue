@@ -1,5 +1,5 @@
 <template>
-  <form :autosave="saveData()">
+  <form @submit.prevent="truefill()">
     <div class="container">
       <input type="date" name="date" v-model="newExpense.date" />
       <select v-model="newExpense.category">
@@ -17,7 +17,6 @@
     <div v-if="errors">
       <p style="color: red">Please fillout all data.</p>
     </div>
-    <a></a>
     <button class="btn" @click="saveData()">Save</button>
     <button class="btn" @click="returnHome()">Cancel</button>
   </form>
@@ -37,17 +36,15 @@ export default {
         category: "",
         value: "",
       },
-      errors: true,
-      autosave: false,
+      errors: false,
     };
   },
   methods: {
     ...mapActions(["loadCategories"]),
     ...mapMutations(["addNew"]),
     saveData() {
-      this.errors = false;
       this.truefill();
-      if (this.autosave == true) {
+      if (this.errors == false) {
         this.addNew(this.newExpense);
         this.returnHome();
       } else {
@@ -60,7 +57,9 @@ export default {
     truefill() {
       if (this.newExpense.category && this.newExpense.value) {
         console.log("form is filled");
-        return (this.autosave = true);
+        return (this.errors = false);
+      } else {
+        return (this.errors = true);
       }
     },
   },

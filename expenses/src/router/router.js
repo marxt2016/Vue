@@ -20,12 +20,6 @@ let router = new Router({
 
         },
         {
-
-            path: '/quickAdd/option/Transport?value=50',
-            component: () => import('../components/NewItemQuick'),
-            name: 'quick'
-        },
-        {
             path: '/',
             component: Homepage,
             name: 'home'
